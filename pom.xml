@@ -1,12 +1,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>com.shuframework</groupId>
 	<artifactId>shu-parent</artifactId>
 	<version>1.0</version>
 	<packaging>pom</packaging>
 	<description>所有项目的父项目(jar版本管理器)</description>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.8.RELEASE</version>
+    </parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,6 +25,7 @@
 		<quartz.version>2.3.0</quartz.version>
 		<joda-time.version>2.9.9</joda-time.version>
         <gson.version>2.8.5</gson.version>
+        <jackson.version>2.9.8</jackson.version>
         <lombok.version>1.16.22</lombok.version>
         <commons-codec.version>1.11</commons-codec.version>
         <commons-dbcp2.version>2.2.0</commons-dbcp2.version>
@@ -42,6 +49,7 @@
         <!-- spring aop需要aspectjrt.jar 已经自动依赖了
         <aspectj.version>1.8.6</aspectj.version>-->
 
+		<qiniu.version>7.2.18</qiniu.version>
 		<fastjson.version>1.2.56</fastjson.version>
         <!-- 基本不会升级版本的包 -->
 		<poi.version>3.17</poi.version>
@@ -62,12 +70,6 @@
         <redisson.version>3.10.2</redisson.version>
 
 	</properties>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.8.RELEASE</version>
-    </parent>
 
     <dependencyManagement>
 		<dependencies>
@@ -98,6 +100,12 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.qiniu</groupId>
+                <artifactId>qiniu-java-sdk</artifactId>
+                <version>${qiniu.version}</version>
             </dependency>
 
             <dependency>
@@ -183,12 +191,16 @@
 				<artifactId>fastjson</artifactId>
 				<version>${fastjson.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>com.google.code.gson</groupId>
 				<artifactId>gson</artifactId>
 				<version>${gson.version}</version>
 			</dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
 
 			<dependency>
 				<groupId>dom4j</groupId>
@@ -399,25 +411,17 @@
 		</dependencies>
     </dependencyManagement>
 
-	<build>
-		<plugins>
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-resources-plugin</artifactId> 
-				<version>2.7</version> <configuration> <encoding>UTF-8</encoding> </configuration> 
-				</plugin> -->
-
-			<!-- 指定jdk版本, 解决每次使用Maven > Update project的时候JDK版本都恢复成1.5，替换为在maven的setting.xml中配置
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.2</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-			 -->
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
