@@ -31,6 +31,8 @@
         <commons-dbcp2.version>2.2.0</commons-dbcp2.version>
         <commons-lang3.version>3.7</commons-lang3.version>
         <commons-pool2.version>2.5.0</commons-pool2.version>
+        <dom4j.version>1.6.1</dom4j.version>
+        <jaxen.version>1.1.6</jaxen.version><!--xpath要用的jar-->
         <!--日志-->
         <slf4j.version>1.7.25</slf4j.version>
         <log4j2.version>2.10.0</log4j2.version>
@@ -57,7 +59,6 @@
 		<commons-io.version>2.6</commons-io.version>
 		<commons-net.version>3.6</commons-net.version>
 		<mail.version>1.4.7</mail.version>
-		<dom4j.version>1.6.1</dom4j.version>
         <xstream.version>1.4.10</xstream.version>
 		<junit.version>4.12</junit.version>
         <javax-servlet.version>3.1.0</javax-servlet.version>
@@ -207,6 +208,11 @@
 				<artifactId>dom4j</artifactId>
 				<version>${dom4j.version}</version>
 			</dependency>
+            <dependency>
+                <groupId>jaxen</groupId>
+                <artifactId>jaxen</artifactId>
+                <version>${jaxen.version}</version>
+            </dependency>
 			<dependency>
 				<groupId>com.thoughtworks.xstream</groupId>
 				<artifactId>xstream</artifactId>
