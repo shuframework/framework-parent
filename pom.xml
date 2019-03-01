@@ -16,6 +16,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <shuframework-release.version>1.0</shuframework-release.version>
+        <shuframework-snapshot.version>1.0-SNAPSHOT</shuframework-snapshot.version>
 
         <!--springboot2.0.8的依赖包版本(开始)-->
         <springboot.version>2.0.8.RELEASE</springboot.version>
@@ -72,6 +74,10 @@
 
 	</properties>
 
+    <!--<dependencies>
+
+    </dependencies>-->
+
     <dependencyManagement>
 		<dependencies>
             <!-- 依赖了spring-boot-starter-parent 这些可以不用
@@ -97,6 +103,31 @@
                 <version>${springboot.version}</version>
             </dependency>
             -->
+
+            <!--框架的模块(开始)-->
+            <dependency>
+                <groupId>com.shuframework</groupId>
+                <artifactId>common-base</artifactId>
+                <version>${shuframework-release.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shuframework</groupId>
+                <artifactId>common-third-tools</artifactId>
+                <version>${shuframework-snapshot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shuframework</groupId>
+                <artifactId>tools-starter-excel</artifactId>
+                <version>${shuframework-snapshot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shuframework</groupId>
+                <artifactId>tools-starter-xml</artifactId>
+                <version>${shuframework-snapshot.version}</version>
+            </dependency>
+            <!--框架的模块(结束)-->
+
+
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
